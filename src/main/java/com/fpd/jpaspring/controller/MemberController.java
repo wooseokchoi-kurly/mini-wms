@@ -2,6 +2,7 @@ package com.fpd.jpaspring.controller;
 
 import com.fpd.jpaspring.controller.dto.MemberCreateDto;
 import com.fpd.jpaspring.controller.dto.MemberResponseDto;
+import com.fpd.jpaspring.controller.dto.MemberUpdateDto;
 import com.fpd.jpaspring.domain.Member;
 import com.fpd.jpaspring.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -53,6 +54,13 @@ public class MemberController {
     @Operation(summary = "회원 등록 API", description = "회원 등록")
     public ResponseEntity<?> createMember(@RequestBody MemberCreateDto memberCreateDto) {
         Long memberId = memberService.createMember(memberCreateDto);
+        return ResponseEntity.ok(memberId);
+    }
+
+    @PutMapping("/v1/members")
+    @Operation(summary = "회원 수정 API", description = "회원 수정")
+    public ResponseEntity<?> updateMember(@RequestBody MemberUpdateDto memberUpdateDto) {
+        Long memberId = memberService.updateMember(memberUpdateDto);
         return ResponseEntity.ok(memberId);
     }
 }

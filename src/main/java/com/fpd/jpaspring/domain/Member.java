@@ -1,6 +1,8 @@
 package com.fpd.jpaspring.domain;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -10,6 +12,8 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicUpdate
+@DynamicInsert
 public class Member {
 
     @Id

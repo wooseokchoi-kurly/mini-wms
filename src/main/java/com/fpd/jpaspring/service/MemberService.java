@@ -2,6 +2,7 @@ package com.fpd.jpaspring.service;
 
 import com.fpd.jpaspring.controller.dto.MemberCreateDto;
 import com.fpd.jpaspring.controller.dto.MemberResponseDto;
+import com.fpd.jpaspring.controller.dto.MemberUpdateDto;
 import com.fpd.jpaspring.domain.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,4 +40,6 @@ public interface MemberService {
      * @return
      */
     Page<MemberResponseDto> getTeamMember(Pageable pageable);
+
+    Long updateMember(MemberUpdateDto memberUpdateDto);
 }
