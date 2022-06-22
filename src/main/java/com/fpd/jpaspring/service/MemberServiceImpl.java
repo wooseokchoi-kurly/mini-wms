@@ -49,7 +49,6 @@ public class MemberServiceImpl implements MemberService {
         return memberQueryDslRepository.getTeamMember(pageable);
     }
 
-<<<<<<< Updated upstream
     @Override
     @Transactional
     public Long updateMember(MemberUpdateDto memberUpdateDto) {
