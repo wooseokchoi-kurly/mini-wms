@@ -16,6 +16,5 @@ public class InboundCreateReqDto extends BaseRequestDto {
     @Schema(description = "입고 담당자", example = "김컬리")
     private String inboundPic;
 
-    @Schema(description = "입고 상세 목록", example = "입고 상세 목록")
     private List<InboundCreateDetailReqDto> inboundCreateDetailReqDtoList;
 }

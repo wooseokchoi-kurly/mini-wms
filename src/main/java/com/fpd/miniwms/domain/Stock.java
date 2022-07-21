@@ -1,6 +1,6 @@
 package com.fpd.miniwms.domain;
 
-import com.fpd.miniwms.domain.common.BaseEntity;
+import com.fpd.miniwms.domain.base.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicInsert;
@@ -25,7 +25,7 @@ public class Stock extends BaseEntity {
     @Column(name = "stock_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @Comment("아이템 아이디")
     @JoinColumn(name = "item_id", foreignKey = @ForeignKey(name = "fk_item_stock"))
     private Item item;

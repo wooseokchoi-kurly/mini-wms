@@ -1,6 +1,7 @@
 package com.fpd.miniwms.domain;
 
-import com.fpd.miniwms.domain.common.BaseEntity;
+import com.fpd.miniwms.controller.dto.response.ItemResDto;
+import com.fpd.miniwms.domain.base.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicInsert;
@@ -39,6 +40,16 @@ public class Item extends BaseEntity {
 
     @Comment("아이템 사용 여부")
     @Column(name = "is_item_use")
+    @Builder.Default
     private Boolean isItemUse = false;
 
+    public static Item of(ItemResDto itemResDto) {
+        return Item.builder()
+                .id(itemResDto.getItemId())
+                .itemCode(itemResDto.getItemCode())
+                .itemName(itemResDto.getItemName())
+                .itemPrice(itemResDto.getItemPrice())
+                .isItemUse(itemResDto.getIsItemUse())
+                .build();
+    }
 }

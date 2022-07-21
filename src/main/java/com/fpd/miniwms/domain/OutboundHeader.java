@@ -1,12 +1,12 @@
 package com.fpd.miniwms.domain;
 
-import com.fpd.miniwms.domain.common.BaseDeletableEntity;
+import com.fpd.miniwms.domain.base.BaseDeletableEntity;
 import lombok.*;
-import org.hibernate.annotations.Comment;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Getter
@@ -16,6 +16,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @DynamicUpdate
 @DynamicInsert
+@SQLDelete(sql = "UPDATE outbound_header SET is_delete = true WHERE outbound_header_id = ?")
 @Table(name = "outbound_header")
 public class OutboundHeader extends BaseDeletableEntity {
 

@@ -1,10 +1,11 @@
 package com.fpd.miniwms.domain;
 
-import com.fpd.miniwms.domain.common.BaseDeletableEntity;
+import com.fpd.miniwms.domain.base.BaseDeletableEntity;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 
@@ -16,6 +17,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @DynamicUpdate
 @DynamicInsert
+@SQLDelete(sql = "UPDATE outbound_detail SET is_delete = true WHERE outbound_detail_id = ?")
 @Table(name = "outbound_detail")
 public class OutboundDetail extends BaseDeletableEntity {
 
@@ -30,7 +32,7 @@ public class OutboundDetail extends BaseDeletableEntity {
     @JoinColumn(name = "outbound_header_id", foreignKey = @ForeignKey(name = "fk_outbound_header_outbound_detail"))
     private OutboundHeader outboundHeader;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @Comment("아이템 아이디")
     @JoinColumn(name = "item_id", foreignKey = @ForeignKey(name = "fk_item_outbound_detail"))
     private Item item;

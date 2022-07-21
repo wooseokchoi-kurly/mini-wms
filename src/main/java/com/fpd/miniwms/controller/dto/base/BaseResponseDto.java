@@ -5,5 +5,5 @@ import lombok.Getter;
 import java.io.Serializable;
 
 @Getter
-public abstract class BaseRequestDto implements Serializable {
+public abstract class BaseResponseDto implements Serializable {
 }
