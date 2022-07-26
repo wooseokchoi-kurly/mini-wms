@@ -1,6 +1,7 @@
 package com.fpd.miniwms.service;
 
 import com.fpd.miniwms.common.exception.OutboundCannotUpdateException;
+import com.fpd.miniwms.common.status.OutboundStatus;
 import com.fpd.miniwms.controller.dto.request.*;
 import com.fpd.miniwms.controller.dto.response.*;
 import com.fpd.miniwms.domain.Item;
@@ -51,6 +52,9 @@ public class OutboundServiceImpl implements OutboundService {
 
         return OutboundResDto.builder()
                 .outboundPic(outboundHeader.getOutboundPic())
+                .outboundStatus(outboundHeader.getIsOutboundComplete()
+                        ? OutboundStatus.COMPLETE.getName()
+                        : OutboundStatus.READY.getName())
                 .outboundResDetailDtoList(outboundResDetailDtoList)
                 .build();
     }

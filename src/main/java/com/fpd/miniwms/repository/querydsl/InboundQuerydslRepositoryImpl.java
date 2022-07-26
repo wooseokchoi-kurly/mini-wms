@@ -1,5 +1,6 @@
 package com.fpd.miniwms.repository.querydsl;
 
+import com.fpd.miniwms.common.status.InboundStatus;
 import com.fpd.miniwms.controller.dto.response.InboundListResDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.CaseBuilder;
@@ -30,8 +31,8 @@ public class InboundQuerydslRepositoryImpl implements InboundQuerydslRepository 
                         inboundHeader.inboundPic.as("inboundPic"),
                         new CaseBuilder()
                                 .when(inboundHeader.isInboundComplete.eq(true))
-                                .then("입고완료")
-                                .otherwise("입고대기").as("inboundStatus"),
+                                .then(InboundStatus.COMPLETE.getName())
+                                .otherwise(InboundStatus.READY.getName()).as("inboundStatus"),
                         item.itemName.max().as("representItemName"),
                         inboundHeader.createdDate.as("createdDate"),
                         inboundHeader.updatedDate.as("updatedDate")

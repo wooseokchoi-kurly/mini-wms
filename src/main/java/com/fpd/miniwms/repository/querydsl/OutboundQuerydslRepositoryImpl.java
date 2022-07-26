@@ -1,5 +1,6 @@
 package com.fpd.miniwms.repository.querydsl;
 
+import com.fpd.miniwms.common.status.OutboundStatus;
 import com.fpd.miniwms.controller.dto.response.OutboundListResDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.CaseBuilder;
@@ -30,8 +31,8 @@ public class OutboundQuerydslRepositoryImpl implements OutboundQuerydslRepositor
                         outboundHeader.outboundPic.as("outboundPic"),
                         new CaseBuilder()
                                 .when(outboundHeader.isOutboundComplete.eq(true))
-                                .then("출고완료")
-                                .otherwise("출고대기").as("outboundStatus"),
+                                .then(OutboundStatus.COMPLETE.getName())
+                                .otherwise(OutboundStatus.READY.getName()).as("outboundStatus"),
                         item.itemName.max().as("representItemName"),
                         outboundHeader.createdDate.as("createdDate"),
                         outboundHeader.updatedDate.as("updatedDate")

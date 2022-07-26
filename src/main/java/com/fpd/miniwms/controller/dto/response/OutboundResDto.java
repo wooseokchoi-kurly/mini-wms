@@ -15,6 +15,9 @@ public class OutboundResDto extends BaseResponseDto {
     @Schema(description = "출고 담당자", example = "김컬리")
     private String outboundPic;
 
+    @Schema(description = "출고 상태", example = "출고대기")
+    private String outboundStatus;
+
     @Schema(description = "출고 상세 목록", example = "출고 상세 목록")
     private List<OutboundResDetailDto> outboundResDetailDtoList;
 }

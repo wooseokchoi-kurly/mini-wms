@@ -31,6 +31,7 @@ public class OutboundHeader extends BaseDeletableEntity {
     private String outboundPic;
 
     @Comment("출고 완료 여부")
+    @Builder.Default
     @Column(name = "is_outbound_complete")
     private Boolean isOutboundComplete = false;
 }

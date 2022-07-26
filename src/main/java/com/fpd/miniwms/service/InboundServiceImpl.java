@@ -1,6 +1,7 @@
 package com.fpd.miniwms.service;
 
 import com.fpd.miniwms.common.exception.InboundCannotUpdateException;
+import com.fpd.miniwms.common.status.InboundStatus;
 import com.fpd.miniwms.controller.dto.request.*;
 import com.fpd.miniwms.controller.dto.response.*;
 import com.fpd.miniwms.domain.InboundDetail;
@@ -51,6 +52,9 @@ public class InboundServiceImpl implements InboundService {
 
         return InboundResDto.builder()
                 .inboundPic(inboundHeader.getInboundPic())
+                .inboundStatus(inboundHeader.getIsInboundComplete()
+                        ? InboundStatus.COMPLETE.getName()
+                        : InboundStatus.READY.getName())
                 .inboundResDetailDtoList(inboundResDetailDtoList)
                 .build();
     }
