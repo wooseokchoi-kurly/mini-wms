@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Tag(name = "아이템 API")
+@Tag(name = "1. 아이템 API")
 @RequiredArgsConstructor
 public class ItemController {
     private final ItemService itemService;

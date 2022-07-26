@@ -24,9 +24,10 @@ public class SwaggerConfig {
 
     @Bean
     public SwaggerUiConfigProperties swaggerUiConfig(SwaggerUiConfigProperties config) {
-        config.setDefaultModelExpandDepth(-1);
         config.setDisableSwaggerDefaultUrl(true);
         config.setUrl("/v3/api-docs");
+        config.setOperationsSorter("alpha");
+        config.setTagsSorter("alpha");
         config.setConfigUrl("/v3/api-docs/swagger-config");
 
         return config;

@@ -18,10 +18,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Tag(name = "입고 API")
+@Tag(name = "2. 입고 API")
 @RequiredArgsConstructor
 public class InboundController {
-
     private final InboundService inboundService;
 
     @GetMapping("/v1/inbound")

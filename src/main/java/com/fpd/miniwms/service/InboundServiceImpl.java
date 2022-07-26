@@ -89,12 +89,12 @@ public class InboundServiceImpl implements InboundService {
         InboundHeader inboundHeader = inboundHeaderRepository.findById(inboundUpdateReqDto.getInboundHeaderId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 입고헤더입니다."));
 
-        List<InboundDetail> inboundDetailList = inboundDetailRepository.findByInboundHeader(inboundHeader);
-        inboundDetailRepository.deleteAll(inboundDetailList);
-
         if (inboundHeader.getIsInboundComplete()) {
             throw new InboundCannotUpdateException();
         }
+
+        List<InboundDetail> inboundDetailList = inboundDetailRepository.findByInboundHeader(inboundHeader);
+        inboundDetailRepository.deleteAll(inboundDetailList);
 
         inboundHeader.setInboundPic(inboundUpdateReqDto.getInboundPic());
 
